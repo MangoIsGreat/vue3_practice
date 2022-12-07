@@ -10,11 +10,12 @@ const dirs = fs.readdirSync("packages").filter((p) => {
   return true;
 });
 
-console.log(dirs);
-
 // 二、并行打包
+// {stdio: "inherit"} -- 子进程的输出在父包中输出
 async function build(target) {
-  await execa("rollup", ["-c", "--environment", `TARGET:${target}`]);
+  await execa("rollup", ["-c", "--environment", `TARGET:${target}`], {
+    stdio: "inherit",
+  });
 }
 
 async function runParaller(dirs, itemfn) {

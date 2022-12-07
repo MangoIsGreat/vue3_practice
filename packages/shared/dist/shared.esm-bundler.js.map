@@ -1,0 +1,1 @@
+{"version":3,"file":"shared.esm-bundler.js","sources":["../src/index.ts"],"sourcesContent":["let a = 1;\nlet k = \"aaaakkk\";\n\nexport {\n    a,\n    k\n}"],"names":[],"mappings":"IAAI,CAAC,GAAG,EAAE;IACN,CAAC,GAAG;;;;"}
