@@ -1,0 +1,8 @@
+{
+  "name": "vue3",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/MangoIsGreat/vue3_practice.git",
+  "author": "钟鹏 <peng.zhong@qlchat.com>",
+  "license": "MIT"
+}
