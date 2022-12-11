@@ -1,11 +1,12 @@
 import { isObject } from "@vue/shared";
+import {
+  reactiveHandlers,
+  shallowReactiveHandlers,
+  readonlyHandlers,
+  shallowReadonlyHandlers,
+} from "./baseHandlers";
 
 // 通过“函数柯理化”实现函数根据传参不同输出结果不同
-const reactiveHandlers = {};
-const shallowReactiveHandlers = {};
-const readonlyHandlers = {};
-const shallowReadonlyHandlers = {};
-
 export function reactive(target) {
   return createReactObj(target, false, reactiveHandlers); // 高阶函数
 }
