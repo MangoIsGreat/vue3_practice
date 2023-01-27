@@ -1,13 +1,16 @@
 import { isObject } from "@vue/shared";
 import { reactive, readonly } from "./reactive";
+import { TrackOpType } from "./operations";
+import { Track } from "./effect";
 
 // get
 function createGetter(isReadonly = false, shallow = false) {
   return function get(target, key, receiver) {
     const res = Reflect.get(target, key, receiver);
     if (!isReadonly) {
-      // 非只读
-      // 依赖收集
+      // 收集依赖，等数据变化后更新视图
+      // 收集effect
+      Track(target, TrackOpType.GET, key);
     }
     if (shallow) {
       // 浅代理
