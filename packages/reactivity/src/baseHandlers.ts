@@ -1,4 +1,4 @@
-import { isObject } from "@vue/shared";
+import { isObject, isArray, isIntegerKey, hasOwn } from "@vue/shared";
 import { reactive, readonly } from "./reactive";
 import { TrackOpType } from "./operations";
 import { Track } from "./effect";
@@ -33,6 +33,20 @@ const shallowReadonlyGet = createGetter(true, true);
 function createSetter(shallow = false) {
   return function set(target, key, value, receiver) {
     const result = Reflect.set(target, key, value, receiver);
+    // 注意：1.是数组还是对象 2.添加值还是修改值
+    // 1.获取老值
+    const oldValue = target[key];
+    // 2.判断
+    let haskey =
+      isArray(target) && isIntegerKey(key)
+        ? Number(key) < target.length
+        : hasOwn(target, key);
+    if (!haskey) {
+      // 没有
+      // 新增
+    } else {
+      // 修改的时候，新值和原来的值一样
+    }
     return result;
   };
 }
